@@ -1,119 +1,25 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Mail, Github, Linkedin } from 'lucide-react';
 import portraitSrc from './assets/derek-portrait.jpg';
+import { useParticleField } from './hooks/useParticleField.js';
+import { useCursorGlow } from './hooks/useCursorGlow.js';
+import { usePortraitTilt } from './hooks/usePortraitTilt.js';
+import { validateContactForm } from './lib/validateContactForm.js';
 
 export default function App() {
   const canvasRef = useRef(null);
   const pageGlowRef = useRef(null);
-  const portraitRef = useRef(null);
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [status, setStatus] = useState(null);
   const [heroCopied, setHeroCopied] = useState(false);
 
   // Ambient particle field, drifting across the whole page
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    let raf;
-    let particles = [];
-
-    function resize() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    resize();
-    window.addEventListener('resize', resize);
-
-    const count = 46;
-    particles = Array.from({ length: count }, () => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      r: Math.random() * 1.5 + 0.4,
-      vx: (Math.random() - 0.5) * 0.1,
-      vy: (Math.random() - 0.5) * 0.1,
-      a: Math.random() * 0.45 + 0.12,
-    }));
-
-    function frame() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach((p) => {
-        if (!reduced) {
-          p.x += p.vx;
-          p.y += p.vy;
-          if (p.x < 0) p.x = canvas.width;
-          if (p.x > canvas.width) p.x = 0;
-          if (p.y < 0) p.y = canvas.height;
-          if (p.y > canvas.height) p.y = 0;
-        }
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(59,255,181,${p.a})`;
-        ctx.shadowColor = 'rgba(59,255,181,0.6)';
-        ctx.shadowBlur = 6;
-        ctx.fill();
-      });
-      if (!reduced) raf = requestAnimationFrame(frame);
-    }
-    frame();
-
-    return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener('resize', resize);
-    };
-  }, []);
+  useParticleField(canvasRef);
 
   // Cursor-following glow, across the whole page
-  useEffect(() => {
-    const glow = pageGlowRef.current;
-    if (!glow) return;
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduced) return;
+  useCursorGlow(pageGlowRef);
 
-    let mx = window.innerWidth / 2;
-    let my = window.innerHeight / 2;
-    let gx = mx;
-    let gy = my;
-    let raf;
-
-    function onMove(e) {
-      mx = e.clientX;
-      my = e.clientY;
-    }
-    window.addEventListener('mousemove', onMove);
-
-    function tick() {
-      gx += (mx - gx) * 0.06;
-      gy += (my - gy) * 0.06;
-      glow.style.transform = `translate(${gx - 180}px, ${gy - 180}px)`;
-      raf = requestAnimationFrame(tick);
-    }
-    raf = requestAnimationFrame(tick);
-
-    return () => {
-      window.removeEventListener('mousemove', onMove);
-      cancelAnimationFrame(raf);
-    };
-  }, []);
-
-  function handlePortraitMove(e) {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const el = portraitRef.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    const px = (e.clientX - rect.left) / rect.width;
-    const py = (e.clientY - rect.top) / rect.height;
-    const rotY = (px - 0.5) * 24;
-    const rotX = (0.5 - py) * 24;
-    el.style.transform = `rotateY(${rotY}deg) rotateX(${rotX}deg) scale(1.04)`;
-  }
-
-  function handlePortraitLeave() {
-    const el = portraitRef.current;
-    if (!el) return;
-    el.style.transform = 'rotateY(0deg) rotateX(0deg) scale(1)';
-  }
+  const { ref: portraitRef, handleMove: handlePortraitMove, handleLeave: handlePortraitLeave } = usePortraitTilt();
 
   async function handleHeroMailClick() {
     try {
@@ -132,7 +38,8 @@ export default function App() {
 
   async function handleFormSubmit(e) {
     e.preventDefault();
-    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
+    const { valid } = validateContactForm(form);
+    if (!valid) {
       setStatus('error');
       return;
     }
