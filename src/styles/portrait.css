@@ -1,7 +1,7 @@
 /* ---------- PORTRAIT INTERLUDE ---------- */
 .dz-portrait{ padding:56px 0; text-align:center; border-bottom:1px solid var(--rule); }
 .dz-portrait .frame-wrap{
-  width:280px; height:280px; margin:0 auto 18px;
+  width:clamp(200px,60vw,280px); height:clamp(200px,60vw,280px); margin:0 auto 18px;
   perspective:900px;
 }
 .dz-portrait .frame{
@@ -29,11 +29,25 @@
   opacity:0.38;
   transition:opacity 0.4s ease;
 }
-.dz-portrait .frame:hover img{
-  filter:grayscale(0.1) contrast(1) brightness(1);
+@media (hover: hover) and (pointer: fine){
+  .dz-portrait .frame:hover img{
+    filter:grayscale(0.1) contrast(1) brightness(1);
+  }
+  .dz-portrait .frame:hover .tint{
+    opacity:0;
+  }
 }
-.dz-portrait .frame:hover .tint{
-  opacity:0;
+
+/* Touch/coarse-pointer devices have no hover state to reveal the portrait,
+   so the default (fully-desaturated + tinted) look would be permanent.
+   Show the revealed portrait by default instead. */
+@media (hover: none){
+  .dz-portrait img{
+    filter:grayscale(0.1) contrast(1) brightness(1);
+  }
+  .dz-portrait .tint{
+    opacity:0;
+  }
 }
 .dz-portrait .caption{
   color:var(--muted);
@@ -42,6 +56,3 @@
   font-size:1rem;
 }
 
-@media (max-width:520px){
-  .dz-portrait .frame-wrap{ width:220px; height:220px; }
-}
