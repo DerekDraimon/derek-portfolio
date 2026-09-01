@@ -1,0 +1,86 @@
+{
+  "meta": {
+    "title": "Derek Zabaleta — Full Stack Developer .NET & React",
+    "description": "Portfolio of Derek Zabaleta, Full Stack .NET and React developer in Medellín, Colombia."
+  },
+  "common": {
+    "location": "Medellín, Colombia"
+  },
+  "hero": {
+    "role": "Full Stack Developer — .NET & React",
+    "lede": "Before writing a single line, I map the whole system in my head: its layers, its dependencies, the exact point where something might break. Then I build it — with .NET, with React, with the same discipline used to engrave a seal.",
+    "ctaMail": "Email me",
+    "ctaMailCopied": "Copied!"
+  },
+  "portrait": {
+    "alt": "Derek on a beach in Brazil, at night",
+    "caption": "Outside the code, the beach — Brazil, at night."
+  },
+  "skills": {
+    "heading": "The craft",
+    "intro": "What I use every day, and what I'm just starting to study. I'd rather show the line between the two than erase it.",
+    "dailyHeading": "Daily use",
+    "studyingHeading": "Currently studying"
+  },
+  "experience": {
+    "heading": "The chronicles",
+    "entries": {
+      "cafam-q10": {
+        "when": "Until August 2026",
+        "title": "Lead developer — CAFAM account, Q10",
+        "description": "Educational software, within a team of about 32 developers. A good part of that project's responsibility fell on me. In recent months the team added Node.js, React, and TypeScript to the main .NET stack."
+      },
+      "sena": {
+        "when": "2021 — 2023",
+        "title": "Systems Analysis and Development Technology, SENA",
+        "description": "Where everything else began."
+      }
+    }
+  },
+  "projects": {
+    "heading": "The artifacts",
+    "intro": "Personal projects, built outside of work.",
+    "entries": {
+      "splitpay": {
+        "title": "SplitPay",
+        "description": "Personal app for splitting shared expenses. Frontend in React + TypeScript + Vite + Tailwind, as a PWA. Backend in .NET 8 Minimal API with Clean Architecture, PostgreSQL, and MediatR/CQRS. Uses the Claude API to read receipts."
+      },
+      "ren": {
+        "title": "Ren",
+        "description": "Collaborative ERP project, with CRM, LMS, and finance modules."
+      },
+      "interview-practice": {
+        "title": "Interview practice",
+        "description": "My own website that generates random questions — programming logic, pseudocode, Docker, AI — to prepare for hiring processes."
+      }
+    }
+  },
+  "certifications": {
+    "heading": "The seal",
+    "entries": {
+      "aws-technical-essentials": {
+        "title": "AWS Technical Essentials",
+        "subtitle": "Certification"
+      }
+    }
+  },
+  "contact": {
+    "heading": "Summon me",
+    "intro": "If email doesn't open on its own, write here and I'll prepare the message for you.",
+    "nameLabel": "Name",
+    "emailLabel": "Email",
+    "messageLabel": "Message",
+    "submit": "Send",
+    "errorStatus": "Fill in all three fields before sending.",
+    "copiedStatus": "Message copied — paste it into an email to derekzabaleta10@gmail.com.",
+    "copyErrorStatus": "I couldn't copy it automatically — select the text and copy it manually.",
+    "directContactPrefix": "Or write to me directly at"
+  },
+  "footer": {
+    "close": "If any of this resonates, let's talk."
+  },
+  "languageToggle": {
+    "switchToEnglish": "Switch to English",
+    "switchToSpanish": "Switch to Spanish"
+  }
+}
