@@ -69,11 +69,14 @@ function AppShell() {
 
   return (
     <div className="dz">
+      <a href="#main-content" className="dz-skip-link">
+        {t('common.skipToContent')}
+      </a>
       <LanguageToggle />
       <canvas ref={canvasRef} className="dz-particles" />
       <div className="dz-page-glow" ref={pageGlowRef} />
 
-      <main className="dz-content">
+      <main id="main-content" className="dz-content">
         <Hero />
         <Portrait />
         <Skills daily={skills.daily} studying={skills.studying} />

@@ -14,6 +14,20 @@
   outline:2px solid var(--mint);
   outline-offset:3px;
 }
+.dz-skip-link{
+  position:absolute;
+  top:-100%;
+  left:0;
+  z-index:10;
+  padding:12px 20px;
+  background:var(--ink);
+  color:var(--mint);
+  border:1px solid var(--mint);
+  transition:top 0.2s ease;
+}
+.dz-skip-link:focus{
+  top:0;
+}
 .dz h1,.dz h2,.dz h3{
   font-family:'Cormorant Garamond', serif;
   font-weight:600;

@@ -4,7 +4,8 @@
     "description": "Portfolio of Derek Zabaleta, Full Stack .NET and React developer in Medellín, Colombia."
   },
   "common": {
-    "location": "Medellín, Colombia"
+    "location": "Medellín, Colombia",
+    "skipToContent": "Skip to main content"
   },
   "hero": {
     "role": "Full Stack Developer — .NET & React",
