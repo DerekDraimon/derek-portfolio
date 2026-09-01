@@ -17,20 +17,19 @@ if (!window.matchMedia) {
   }));
 }
 
-// jsdom does not implement canvas 2D context. useParticleField/useCursorGlow
-// call getContext('2d') on mount, so the mount/unmount smoke tests need a stub.
-if (!HTMLCanvasElement.prototype.getContext) {
-  HTMLCanvasElement.prototype.getContext = vi.fn(() => ({
-    clearRect: vi.fn(),
-    fillRect: vi.fn(),
-    beginPath: vi.fn(),
-    arc: vi.fn(),
-    fill: vi.fn(),
-    createRadialGradient: vi.fn(() => ({ addColorStop: vi.fn() })),
-    setTransform: vi.fn(),
-    scale: vi.fn(),
-  }));
-}
+// jsdom ships a getContext('2d') stub that always returns null (with a
+// console warning), it does not throw/is not undefined — so a truthy guard
+// never replaces it. Always override with a real mock context.
+HTMLCanvasElement.prototype.getContext = vi.fn(() => ({
+  clearRect: vi.fn(),
+  fillRect: vi.fn(),
+  beginPath: vi.fn(),
+  arc: vi.fn(),
+  fill: vi.fn(),
+  createRadialGradient: vi.fn(() => ({ addColorStop: vi.fn() })),
+  setTransform: vi.fn(),
+  scale: vi.fn(),
+}));
 
 // jsdom does not implement requestAnimationFrame/cancelAnimationFrame.
 if (!window.requestAnimationFrame) {
