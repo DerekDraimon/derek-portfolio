@@ -66,14 +66,22 @@
   },
   "contact": {
     "heading": "Invócame",
-    "intro": "Si el correo no se abre solo, escribe aquí y preparo el mensaje por ti.",
+    "intro": "Escribe aquí y te respondo lo antes posible.",
     "nameLabel": "Nombre",
     "emailLabel": "Correo",
     "messageLabel": "Mensaje",
     "submit": "Enviar",
-    "errorStatus": "Completa los tres campos antes de enviar.",
-    "copiedStatus": "Mensaje copiado — pégalo en un correo a derekzabaleta10@gmail.com.",
-    "copyErrorStatus": "No pude copiarlo solo — selecciona el texto y cópialo manual.",
+    "sendingLabel": "Enviando…",
+    "errors": {
+      "required": "Este campo es obligatorio.",
+      "invalidEmail": "Ingresa un correo electrónico válido.",
+      "tooLong": "Este valor es demasiado largo."
+    },
+    "status": {
+      "sending": "Enviando tu mensaje…",
+      "success": "Mensaje enviado — te responderé pronto.",
+      "error": "Algo salió mal al enviar tu mensaje."
+    },
     "directContactPrefix": "O escríbeme directo a"
   },
   "footer": {

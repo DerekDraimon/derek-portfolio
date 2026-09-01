@@ -66,14 +66,22 @@
   },
   "contact": {
     "heading": "Summon me",
-    "intro": "If email doesn't open on its own, write here and I'll prepare the message for you.",
+    "intro": "Write here and I'll get back to you as soon as possible.",
     "nameLabel": "Name",
     "emailLabel": "Email",
     "messageLabel": "Message",
     "submit": "Send",
-    "errorStatus": "Fill in all three fields before sending.",
-    "copiedStatus": "Message copied — paste it into an email to derekzabaleta10@gmail.com.",
-    "copyErrorStatus": "I couldn't copy it automatically — select the text and copy it manually.",
+    "sendingLabel": "Sending…",
+    "errors": {
+      "required": "This field is required.",
+      "invalidEmail": "Enter a valid email address.",
+      "tooLong": "This value is too long."
+    },
+    "status": {
+      "sending": "Sending your message…",
+      "success": "Message sent — I'll get back to you soon.",
+      "error": "Something went wrong sending your message."
+    },
     "directContactPrefix": "Or write to me directly at"
   },
   "footer": {
