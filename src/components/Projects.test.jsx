@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
+import { renderWithLocale } from '../i18n/testUtils.jsx';
 import Projects from './Projects.jsx';
 
 const mockProjects = [
@@ -10,13 +11,13 @@ const mockProjects = [
 
 describe('Projects', () => {
   it('renders one h3 heading per project from content data', () => {
-    render(<Projects projects={mockProjects} />);
+    renderWithLocale(<Projects projects={mockProjects} />);
     expect(screen.getByRole('heading', { level: 3, name: 'Alpha' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { level: 3, name: 'Beta' })).toBeInTheDocument();
   });
 
   it('renders tag chips only for projects that have tags', () => {
-    render(<Projects projects={mockProjects} />);
+    renderWithLocale(<Projects projects={mockProjects} />);
     expect(screen.getByText('React')).toBeInTheDocument();
     const betaHeading = screen.getByRole('heading', { level: 3, name: 'Beta' });
     const betaCard = betaHeading.closest('.dz-artefacto');

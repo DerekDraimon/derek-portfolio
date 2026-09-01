@@ -1,7 +1,8 @@
 import { describe, expect, it, vi } from 'vitest';
-import { render, screen, waitFor } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
+import { renderWithLocale } from '../i18n/testUtils.jsx';
 import ContactForm from './ContactForm.jsx';
 
 // `userEvent.setup()` installs its own `navigator.clipboard` stub, which
@@ -16,7 +17,7 @@ function stubClipboard() {
 
 describe('ContactForm', () => {
   it('renders labeled name, email, and message inputs', () => {
-    render(<ContactForm />);
+    renderWithLocale(<ContactForm />);
     expect(screen.getByLabelText('Nombre')).toBeInTheDocument();
     expect(screen.getByLabelText('Correo')).toBeInTheDocument();
     expect(screen.getByLabelText('Mensaje')).toBeInTheDocument();
@@ -25,7 +26,7 @@ describe('ContactForm', () => {
   it('shows a validation error message when submitted with all fields empty', async () => {
     const user = userEvent.setup();
     stubClipboard();
-    render(<ContactForm />);
+    renderWithLocale(<ContactForm />);
     await user.click(screen.getByRole('button', { name: 'Enviar' }));
     expect(screen.getByText('Completa los tres campos antes de enviar.')).toBeInTheDocument();
   });
@@ -33,7 +34,7 @@ describe('ContactForm', () => {
   it('shows a copied status message after a valid submission', async () => {
     const user = userEvent.setup();
     stubClipboard();
-    render(<ContactForm />);
+    renderWithLocale(<ContactForm />);
     await user.type(screen.getByLabelText('Nombre'), 'Ada');
     await user.type(screen.getByLabelText('Correo'), 'ada@example.com');
     await user.type(screen.getByLabelText('Mensaje'), 'Hola Derek');
@@ -45,5 +46,13 @@ describe('ContactForm', () => {
     expect(navigator.clipboard.writeText).toHaveBeenCalledWith(
       expect.stringContaining('Ada (ada@example.com)')
     );
+  });
+
+  it('renders the English form labels and submit button when the locale is English', () => {
+    renderWithLocale(<ContactForm />, { locale: 'en' });
+    expect(screen.getByLabelText('Name')).toBeInTheDocument();
+    expect(screen.getByLabelText('Email')).toBeInTheDocument();
+    expect(screen.getByLabelText('Message')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Send' })).toBeInTheDocument();
   });
 });

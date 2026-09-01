@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Mail, Github, Linkedin } from 'lucide-react';
+import { useTranslation } from '../i18n/useTranslation.js';
 
 /**
  * Hero header — name, role, lede, and primary CTAs. Owns the
@@ -7,6 +8,7 @@ import { Mail, Github, Linkedin } from 'lucide-react';
  * needs it.
  */
 export default function Hero() {
+  const { t } = useTranslation();
   const [heroCopied, setHeroCopied] = useState(false);
 
   async function handleHeroMailClick() {
@@ -15,7 +17,8 @@ export default function Hero() {
       setHeroCopied(true);
       setTimeout(() => setHeroCopied(false), 2200);
     } catch {
-      // el navegador puede bloquear el portapapeles sin permiso; el enlace mailto sigue ahí como respaldo
+      // the browser may block clipboard access without permission; the
+      // mailto link still works as a fallback
     }
   }
 
@@ -29,19 +32,15 @@ export default function Hero() {
         </svg>
 
         <h1>Derek Zabaleta</h1>
-        <div className="role">Full Stack Developer — .NET &amp; React</div>
+        <div className="role">{t('hero.role')}</div>
 
-        <p className="lede">
-          Antes de escribir una línea, trazo el sistema completo en la cabeza: sus capas,
-          sus dependencias, el punto exacto donde algo puede romperse. Luego lo construyo —
-          con .NET, con React, con la misma disciplina con la que se traza un sello.
-        </p>
+        <p className="lede">{t('hero.lede')}</p>
 
-        <p className="loc">Medellín, Colombia</p>
+        <p className="loc">{t('common.location')}</p>
 
         <div className="ctas">
           <a className="dz-cta primary" href="mailto:derekzabaleta10@gmail.com" onClick={handleHeroMailClick}>
-            <Mail size={16} /> {heroCopied ? '¡Correo copiado!' : 'Escríbeme'}
+            <Mail size={16} /> {heroCopied ? t('hero.ctaMailCopied') : t('hero.ctaMail')}
           </a>
           <a className="dz-cta" href="https://github.com/DerekDraimon" target="_blank" rel="noopener noreferrer">
             <Github size={16} /> GitHub

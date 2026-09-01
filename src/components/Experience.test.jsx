@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
+import { renderWithLocale } from '../i18n/testUtils.jsx';
 import Experience from './Experience.jsx';
 
 const mockEntries = [
@@ -10,7 +11,7 @@ const mockEntries = [
 
 describe('Experience', () => {
   it('renders one h3 per entry, in the given order, from content data', () => {
-    render(<Experience entries={mockEntries} />);
+    renderWithLocale(<Experience entries={mockEntries} />);
     const headings = screen.getAllByRole('heading', { level: 3 });
     expect(headings.map((h) => h.textContent)).toEqual(['Role A', 'Role B']);
   });
