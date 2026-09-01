@@ -1,0 +1,95 @@
+{
+  "meta": {
+    "title": "Derek Zabaleta — Full Stack Developer .NET & React",
+    "description": "Portfolio of Derek Zabaleta, Full Stack .NET and React developer in Medellín, Colombia."
+  },
+  "common": {
+    "location": "Medellín, Colombia",
+    "skipToContent": "Skip to main content"
+  },
+  "hero": {
+    "role": "Full Stack Developer — .NET & React",
+    "lede": "Before writing a single line, I map the whole system in my head: its layers, its dependencies, the exact point where something might break. Then I build it — with .NET, with React, with the same discipline used to engrave a seal.",
+    "ctaMail": "Email me",
+    "ctaMailCopied": "Copied!"
+  },
+  "portrait": {
+    "alt": "Derek on a beach in Brazil, at night",
+    "caption": "Outside the code, the beach — Brazil, at night."
+  },
+  "skills": {
+    "heading": "The craft",
+    "intro": "What I use every day, and what I'm just starting to study. I'd rather show the line between the two than erase it.",
+    "dailyHeading": "Daily use",
+    "studyingHeading": "Currently studying"
+  },
+  "experience": {
+    "heading": "The chronicles",
+    "entries": {
+      "cafam-q10": {
+        "when": "Until August 2026",
+        "title": "Lead developer — CAFAM account, Q10",
+        "description": "Educational software, within a team of about 32 developers. A good part of that project's responsibility fell on me. In recent months the team added Node.js, React, and TypeScript to the main .NET stack."
+      },
+      "sena": {
+        "when": "2021 — 2023",
+        "title": "Systems Analysis and Development Technology, SENA",
+        "description": "Where everything else began."
+      }
+    }
+  },
+  "projects": {
+    "heading": "The artifacts",
+    "intro": "Personal projects, built outside of work.",
+    "entries": {
+      "splitpay": {
+        "title": "SplitPay",
+        "description": "Personal app for splitting shared expenses. Frontend in React + TypeScript + Vite + Tailwind, as a PWA. Backend in .NET 8 Minimal API with Clean Architecture, PostgreSQL, and MediatR/CQRS. Uses the Claude API to read receipts."
+      },
+      "ren": {
+        "title": "Ren",
+        "description": "Collaborative ERP project, with CRM, LMS, and finance modules."
+      },
+      "interview-practice": {
+        "title": "Interview practice",
+        "description": "My own website that generates random questions — programming logic, pseudocode, Docker, AI — to prepare for hiring processes."
+      }
+    }
+  },
+  "certifications": {
+    "heading": "The seal",
+    "entries": {
+      "aws-technical-essentials": {
+        "title": "AWS Technical Essentials",
+        "subtitle": "Certification"
+      }
+    }
+  },
+  "contact": {
+    "heading": "Summon me",
+    "intro": "Write here and I'll get back to you as soon as possible.",
+    "nameLabel": "Name",
+    "emailLabel": "Email",
+    "messageLabel": "Message",
+    "submit": "Send",
+    "sendingLabel": "Sending…",
+    "errors": {
+      "required": "This field is required.",
+      "invalidEmail": "Enter a valid email address.",
+      "tooLong": "This value is too long."
+    },
+    "status": {
+      "sending": "Sending your message…",
+      "success": "Message sent — I'll get back to you soon.",
+      "error": "Something went wrong sending your message."
+    },
+    "directContactPrefix": "Or write to me directly at"
+  },
+  "footer": {
+    "close": "If any of this resonates, let's talk."
+  },
+  "languageToggle": {
+    "switchToEnglish": "Switch to English",
+    "switchToSpanish": "Switch to Spanish"
+  }
+}

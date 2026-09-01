@@ -1,0 +1,37 @@
+.dz{
+  position:relative;
+  background:var(--ink);
+  color:var(--text);
+  font-family:'Inter', sans-serif;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  min-height:100vh;
+}
+
+.dz *{ box-sizing:border-box; }
+.dz a{ color:var(--mint); }
+.dz a:focus-visible, .dz button:focus-visible{
+  outline:2px solid var(--mint);
+  outline-offset:3px;
+}
+.dz-skip-link{
+  position:absolute;
+  top:-100%;
+  left:0;
+  z-index:10;
+  padding:12px 20px;
+  background:var(--ink);
+  color:var(--mint);
+  border:1px solid var(--mint);
+  transition:top 0.2s ease;
+}
+.dz-skip-link:focus{
+  top:0;
+}
+.dz h1,.dz h2,.dz h3{
+  font-family:'Cormorant Garamond', serif;
+  font-weight:600;
+  margin:0;
+  color:var(--text);
+}
+.dz .mono{ font-family:'JetBrains Mono', monospace; }

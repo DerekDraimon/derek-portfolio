@@ -1,0 +1,95 @@
+{
+  "meta": {
+    "title": "Derek Zabaleta — Full Stack Developer .NET & React",
+    "description": "Portafolio de Derek Zabaleta, desarrollador Full Stack .NET y React en Medellín, Colombia."
+  },
+  "common": {
+    "location": "Medellín, Colombia",
+    "skipToContent": "Saltar al contenido principal"
+  },
+  "hero": {
+    "role": "Full Stack Developer — .NET & React",
+    "lede": "Antes de escribir una línea, trazo el sistema completo en la cabeza: sus capas, sus dependencias, el punto exacto donde algo puede romperse. Luego lo construyo — con .NET, con React, con la misma disciplina con la que se traza un sello.",
+    "ctaMail": "Escríbeme",
+    "ctaMailCopied": "¡Correo copiado!"
+  },
+  "portrait": {
+    "alt": "Derek en una playa de Brasil, de noche",
+    "caption": "Fuera del código, la playa — Brasil, de noche."
+  },
+  "skills": {
+    "heading": "La materia",
+    "intro": "Lo que uso todos los días, y lo que apenas estoy empezando a estudiar. Prefiero mostrar la línea entre las dos cosas antes que borrarla.",
+    "dailyHeading": "De uso diario",
+    "studyingHeading": "En estudio"
+  },
+  "experience": {
+    "heading": "Las crónicas",
+    "entries": {
+      "cafam-q10": {
+        "when": "Hasta agosto de 2026",
+        "title": "Desarrollador a cargo — cuenta CAFAM, Q10",
+        "description": "Software educativo, dentro de un equipo de cerca de 32 desarrolladores. Buena parte de la responsabilidad de ese proyecto recayó sobre mí. En los últimos meses el equipo sumó Node.js, React y TypeScript al stack principal de .NET."
+      },
+      "sena": {
+        "when": "2021 — 2023",
+        "title": "Tecnología en Análisis y Desarrollo de Sistemas, SENA",
+        "description": "Donde empezó todo lo demás."
+      }
+    }
+  },
+  "projects": {
+    "heading": "Los artefactos",
+    "intro": "Proyectos propios, construidos por fuera del trabajo.",
+    "entries": {
+      "splitpay": {
+        "title": "SplitPay",
+        "description": "App personal para dividir gastos compartidos. Frontend en React + TypeScript + Vite + Tailwind, como PWA. Backend en .NET 8 Minimal API con Clean Architecture, PostgreSQL y MediatR/CQRS. Usa la API de Claude para leer recibos."
+      },
+      "ren": {
+        "title": "Ren",
+        "description": "Proyecto de ERP colaborativo, con módulos de CRM, LMS y financiero."
+      },
+      "interview-practice": {
+        "title": "Práctica para entrevistas",
+        "description": "Página web propia que genera preguntas aleatorias — lógica de programación, pseudocódigo, Docker, IA — para preparar procesos de selección."
+      }
+    }
+  },
+  "certifications": {
+    "heading": "El sello",
+    "entries": {
+      "aws-technical-essentials": {
+        "title": "AWS Technical Essentials",
+        "subtitle": "Certificación"
+      }
+    }
+  },
+  "contact": {
+    "heading": "Invócame",
+    "intro": "Escribe aquí y te respondo lo antes posible.",
+    "nameLabel": "Nombre",
+    "emailLabel": "Correo",
+    "messageLabel": "Mensaje",
+    "submit": "Enviar",
+    "sendingLabel": "Enviando…",
+    "errors": {
+      "required": "Este campo es obligatorio.",
+      "invalidEmail": "Ingresa un correo electrónico válido.",
+      "tooLong": "Este valor es demasiado largo."
+    },
+    "status": {
+      "sending": "Enviando tu mensaje…",
+      "success": "Mensaje enviado — te responderé pronto.",
+      "error": "Algo salió mal al enviar tu mensaje."
+    },
+    "directContactPrefix": "O escríbeme directo a"
+  },
+  "footer": {
+    "close": "Si algo de esto resuena, hablemos."
+  },
+  "languageToggle": {
+    "switchToEnglish": "Cambiar a inglés",
+    "switchToSpanish": "Cambiar a español"
+  }
+}
