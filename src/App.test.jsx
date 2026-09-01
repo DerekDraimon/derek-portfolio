@@ -58,6 +58,13 @@ describe('App semantic landmarks', () => {
     expect(screen.getByRole('button', { name: /inglés/i })).toBeInTheDocument();
   });
 
+  it('renders a skip link targeting the main landmark by id', () => {
+    render(<App />);
+    const skipLink = screen.getByRole('link', { name: /saltar al contenido/i });
+    expect(skipLink).toHaveAttribute('href', '#main-content');
+    expect(screen.getByRole('main')).toHaveAttribute('id', 'main-content');
+  });
+
   it('switches all chapter headings to English when the toggle is clicked', async () => {
     const user = userEvent.setup();
     render(<App />);
