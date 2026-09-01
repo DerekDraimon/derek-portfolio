@@ -10,8 +10,7 @@
   "hero": {
     "role": "Full Stack Developer — .NET & React",
     "lede": "Before writing a single line, I map the whole system in my head: its layers, its dependencies, the exact point where something might break. Then I build it — with .NET, with React, with the same discipline used to engrave a seal.",
-    "ctaMail": "Email me",
-    "ctaMailCopied": "Copied!"
+    "ctaMail": "Email me"
   },
   "portrait": {
     "alt": "Derek on a beach in Brazil, at night",

@@ -10,8 +10,7 @@
   "hero": {
     "role": "Full Stack Developer — .NET & React",
     "lede": "Antes de escribir una línea, trazo el sistema completo en la cabeza: sus capas, sus dependencias, el punto exacto donde algo puede romperse. Luego lo construyo — con .NET, con React, con la misma disciplina con la que se traza un sello.",
-    "ctaMail": "Escríbeme",
-    "ctaMailCopied": "¡Correo copiado!"
+    "ctaMail": "Escríbeme"
   },
   "portrait": {
     "alt": "Derek en una playa de Brasil, de noche",

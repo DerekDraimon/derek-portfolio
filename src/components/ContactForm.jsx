@@ -90,7 +90,7 @@ export default function ContactForm() {
   }
 
   return (
-    <section className="dz-chapter">
+    <section id="contact" className="dz-chapter">
       <div className="dz-wrap">
         <div className="dz-chapter-mark">
           <span className="num">VI</span>

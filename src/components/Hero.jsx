@@ -1,26 +1,11 @@
-import { useState } from 'react';
 import { Mail, Github, Linkedin } from 'lucide-react';
 import { useTranslation } from '../i18n/useTranslation.js';
 
 /**
- * Hero header — name, role, lede, and primary CTAs. Owns the
- * clipboard-copy confirmation state locally since no other component
- * needs it.
+ * Hero header — name, role, lede, and primary CTAs.
  */
 export default function Hero() {
   const { t } = useTranslation();
-  const [heroCopied, setHeroCopied] = useState(false);
-
-  async function handleHeroMailClick() {
-    try {
-      await navigator.clipboard.writeText('derekzabaleta10@gmail.com');
-      setHeroCopied(true);
-      setTimeout(() => setHeroCopied(false), 2200);
-    } catch {
-      // the browser may block clipboard access without permission; the
-      // mailto link still works as a fallback
-    }
-  }
 
   return (
     <header className="dz-hero">
@@ -39,8 +24,8 @@ export default function Hero() {
         <p className="loc">{t('common.location')}</p>
 
         <div className="ctas">
-          <a className="dz-cta primary" href="mailto:derekzabaleta10@gmail.com" onClick={handleHeroMailClick}>
-            <Mail size={16} /> {heroCopied ? t('hero.ctaMailCopied') : t('hero.ctaMail')}
+          <a className="dz-cta primary" href="#contact">
+            <Mail size={16} /> {t('hero.ctaMail')}
           </a>
           <a className="dz-cta" href="https://github.com/DerekDraimon" target="_blank" rel="noopener noreferrer">
             <Github size={16} /> GitHub
