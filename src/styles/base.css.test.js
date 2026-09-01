@@ -18,4 +18,14 @@ describe('base.css document-level reset', () => {
   it('matches the dark background on body so overscroll bounce is not white', () => {
     expect(css).toMatch(/body\s*\{[^}]*background:\s*var\(--ink\)/);
   });
+
+  it('smooth-scrolls in-page anchor jumps (e.g. the hero CTA to #contact)', () => {
+    expect(css).toMatch(/html\s*\{[^}]*scroll-behavior:\s*smooth/);
+  });
+
+  it('disables smooth scrolling for prefers-reduced-motion', () => {
+    const reducedMotionBlockMatch = css.match(/@media \(prefers-reduced-motion: reduce\)\{([\s\S]*?)\n\}/);
+    expect(reducedMotionBlockMatch).not.toBeNull();
+    expect(reducedMotionBlockMatch[1]).toMatch(/html\s*\{[^}]*scroll-behavior:\s*auto/);
+  });
 });
