@@ -1,0 +1,5 @@
+.dz-colofon{ padding:70px 0 60px; text-align:center; }
+.dz-colofon .close{ font-family:'Cormorant Garamond', serif; font-style:italic; font-size:1.3rem; margin-bottom:28px; }
+.dz-colofon .links{ display:flex; justify-content:center; gap:22px; flex-wrap:wrap; font-size:0.9rem; margin-bottom:20px; }
+.dz-colofon .links a{ display:inline-flex; align-items:center; gap:6px; text-decoration:none; border-bottom:1px solid var(--mint-dim); padding-bottom:2px; }
+.dz-colofon .loc{ color:var(--muted); font-size:0.82rem; }

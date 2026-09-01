@@ -1,0 +1,21 @@
+.dz-form{ display:flex; flex-direction:column; gap:16px; max-width:440px; }
+.dz-field{ display:flex; flex-direction:column; gap:6px; }
+.dz-field label{ font-size:0.8rem; color:var(--muted); font-family:'JetBrains Mono', monospace; }
+.dz-field input, .dz-field textarea{
+  background:var(--panel);
+  border:1px solid var(--rule);
+  color:var(--text);
+  padding:10px 12px;
+  font-family:'Inter', sans-serif;
+  font-size:0.95rem;
+  resize:vertical;
+  transition:border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.dz-field input:focus, .dz-field textarea:focus{
+  outline:none;
+  border-color:var(--mint);
+  box-shadow:0 0 0 3px rgba(59,255,181,0.15);
+}
+.dz-form-note{ font-size:0.85rem; color:var(--muted); margin:0; }
+.dz-form-actions{ display:flex; gap:14px; flex-wrap:wrap; margin-top:2px; }
+button.dz-cta{ font-family:inherit; cursor:pointer; background:transparent; }

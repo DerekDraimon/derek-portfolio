@@ -1,0 +1,10 @@
+:root{
+  --ink:#070C0A;
+  --panel:#0E1713;
+  --mint:#3BFFB5;
+  --mint-dim:#1F7A5C;
+  --mint-glow: rgba(59,255,181,0.55);
+  --text:#D9E7E0;
+  --muted:#7E9089;
+  --rule: rgba(59,255,181,0.15);
+}

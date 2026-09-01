@@ -1,0 +1,97 @@
+/* ---------- HERO ---------- */
+.dz-hero{
+  position:relative;
+  padding:96px 0 84px;
+  text-align:center;
+  border-bottom:1px solid var(--rule);
+}
+.dz-page-glow{
+  position:fixed;
+  width:360px;
+  height:360px;
+  border-radius:50%;
+  background:radial-gradient(circle, var(--mint-glow), transparent 70%);
+  filter:blur(30px);
+  opacity:0.35;
+  top:0;
+  left:0;
+  z-index:0;
+  pointer-events:none;
+  transform:translate(-1000px,-1000px);
+}
+
+.dz-sigil{ width:132px; height:132px; margin:0 auto 40px; position:relative; z-index:1; }
+.dz-sigil circle, .dz-sigil path{ fill:none; stroke:var(--mint); stroke-width:1.1; }
+.dz-sigil .draw{
+  stroke-dasharray:620;
+  stroke-dashoffset:620;
+  animation:dz-draw 2.1s ease-out forwards;
+  filter:drop-shadow(0 0 4px var(--mint-glow));
+}
+.dz-sigil text{
+  font-family:'Cormorant Garamond', serif;
+  fill:var(--mint);
+  font-size:34px;
+  opacity:0;
+  animation:dz-fade 1s ease-out 1.6s forwards;
+}
+@keyframes dz-draw{ to{ stroke-dashoffset:0; } }
+@keyframes dz-fade{ to{ opacity:1; } }
+@media (prefers-reduced-motion: reduce){
+  .dz-sigil .draw{ animation:none; stroke-dashoffset:0; }
+  .dz-sigil text{ animation:none; opacity:1; }
+}
+
+.dz-hero h1{
+  position:relative; z-index:1;
+  font-size:clamp(2.6rem, 6vw, 3.6rem);
+  letter-spacing:0.01em;
+}
+.dz-hero .role{
+  position:relative; z-index:1;
+  margin-top:10px;
+  color:var(--mint);
+  font-size:1.05rem;
+  font-family:'Cormorant Garamond', serif;
+  font-style:italic;
+  font-weight:500;
+}
+.dz-hero .lede{
+  position:relative; z-index:1;
+  max-width:520px;
+  margin:30px auto 0;
+  font-size:1.05rem;
+}
+.dz-hero .loc{
+  position:relative; z-index:1;
+  margin-top:18px;
+  color:var(--muted);
+  font-size:0.9rem;
+}
+.dz-hero .ctas{
+  position:relative; z-index:1;
+  margin-top:38px;
+  display:flex;
+  gap:14px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.dz-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:11px 22px;
+  border:1px solid var(--mint-dim);
+  color:var(--text);
+  text-decoration:none;
+  font-size:0.92rem;
+  letter-spacing:0.02em;
+  transition:background 0.2s, color 0.2s, border-color 0.2s;
+}
+.dz-cta:hover{ background:var(--mint); color:var(--ink); border-color:var(--mint); }
+.dz-cta.primary{ background:var(--mint); color:var(--ink); border-color:var(--mint); }
+.dz-cta.primary:hover{ background:transparent; color:var(--text); }
+
+@media (max-width:520px){
+  .dz-hero{ padding:72px 0 60px; }
+}
