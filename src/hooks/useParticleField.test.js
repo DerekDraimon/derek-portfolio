@@ -8,15 +8,18 @@ function makeCanvasRef() {
     beginPath: vi.fn(),
     arc: vi.fn(),
     fill: vi.fn(),
+    setTransform: vi.fn(),
   };
   const canvas = { getContext: vi.fn(() => ctx), width: 0, height: 0 };
   return { ref: { current: canvas }, ctx, canvas };
 }
 
 describe('useParticleField', () => {
-  const original = window.matchMedia;
+  const originalMatchMedia = window.matchMedia;
+  const originalDpr = window.devicePixelRatio;
   afterEach(() => {
-    window.matchMedia = original;
+    window.matchMedia = originalMatchMedia;
+    window.devicePixelRatio = originalDpr;
   });
 
   it('draws 46 particles onto the canvas 2d context on mount', () => {
@@ -63,5 +66,27 @@ describe('useParticleField', () => {
   it('does nothing when the canvas ref is not attached', () => {
     const ref = { current: null };
     expect(() => renderHook(() => useParticleField(ref))).not.toThrow();
+  });
+
+  it('scales the canvas backing store by devicePixelRatio and sets a matching context transform', () => {
+    window.devicePixelRatio = 2;
+    const { ref, ctx, canvas } = makeCanvasRef();
+    renderHook(() => useParticleField(ref));
+    expect(canvas.width).toBe(window.innerWidth * 2);
+    expect(canvas.height).toBe(window.innerHeight * 2);
+    expect(ctx.setTransform).toHaveBeenCalledWith(2, 0, 0, 2, 0, 0);
+  });
+
+  it('spawns particles within CSS-pixel viewport bounds, not the DPR-scaled backing store', () => {
+    // Regression guard: using the DPR-scaled canvas.width/height for spawn
+    // bounds instead of window.innerWidth/innerHeight clusters every
+    // particle into the top-left quadrant on any DPR > 1 display.
+    window.devicePixelRatio = 2;
+    const { ref, ctx } = makeCanvasRef();
+    renderHook(() => useParticleField(ref));
+    const xs = ctx.arc.mock.calls.map(([x]) => x);
+    const ys = ctx.arc.mock.calls.map(([, y]) => y);
+    expect(xs.every((x) => x <= window.innerWidth)).toBe(true);
+    expect(ys.every((y) => y <= window.innerHeight)).toBe(true);
   });
 });

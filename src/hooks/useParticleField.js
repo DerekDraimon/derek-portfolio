@@ -1,11 +1,22 @@
 import { useEffect } from 'react';
 import { useReducedMotion } from './useReducedMotion.js';
+import { getScaledCanvasSize } from '../lib/canvasDpr.js';
 
 /**
  * Drives the ambient particle-field canvas animation. Mount/unmount only —
  * exact pixel/animation output is exempt from assertion per the design's
  * test-architecture notes; this is smoke-tested for wiring correctness
  * (draws, schedules frames, cleans up) rather than visual output.
+ *
+ * The canvas backing store is scaled by `devicePixelRatio` (capped at 2,
+ * via `getScaledCanvasSize`) so the particle field renders crisp on
+ * retina/high-DPI displays instead of soft/blurry. `ctx.setTransform` then
+ * maps drawing coordinates back to CSS-pixel space, so every subsequent
+ * `clearRect`/`arc` call and every particle's spawn/wrap bound below stays
+ * in CSS pixels (`window.innerWidth`/`innerHeight`) rather than the
+ * DPR-scaled backing-store pixels (`canvas.width`/`height`) — using the
+ * scaled values there would cluster all particles into the top-left
+ * quadrant of the viewport on any DPR > 1 display.
  * @param {import('react').RefObject<HTMLCanvasElement>} canvasRef
  */
 export function useParticleField(canvasRef) {
@@ -19,16 +30,22 @@ export function useParticleField(canvasRef) {
     let particles = [];
 
     function resize() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      const { dpr, width, height } = getScaledCanvasSize(
+        window.devicePixelRatio,
+        window.innerWidth,
+        window.innerHeight,
+      );
+      canvas.width = width;
+      canvas.height = height;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     }
     resize();
     window.addEventListener('resize', resize);
 
     const count = 46;
     particles = Array.from({ length: count }, () => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
+      x: Math.random() * window.innerWidth,
+      y: Math.random() * window.innerHeight,
       r: Math.random() * 1.5 + 0.4,
       vx: (Math.random() - 0.5) * 0.1,
       vy: (Math.random() - 0.5) * 0.1,
@@ -36,15 +53,15 @@ export function useParticleField(canvasRef) {
     }));
 
     function frame() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
       particles.forEach((p) => {
         if (!reduced) {
           p.x += p.vx;
           p.y += p.vy;
-          if (p.x < 0) p.x = canvas.width;
-          if (p.x > canvas.width) p.x = 0;
-          if (p.y < 0) p.y = canvas.height;
-          if (p.y > canvas.height) p.y = 0;
+          if (p.x < 0) p.x = window.innerWidth;
+          if (p.x > window.innerWidth) p.x = 0;
+          if (p.y < 0) p.y = window.innerHeight;
+          if (p.y > window.innerHeight) p.y = 0;
         }
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
